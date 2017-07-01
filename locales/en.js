@@ -1,5 +1,5 @@
 export default {
     HomeHeaderRight: {
-        title:  'Issues'
+        issueTitle:  'Issues'
     }
 }
