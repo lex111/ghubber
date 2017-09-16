@@ -23,6 +23,7 @@ import type { ProfileOrganizationsState } from 'reducers/profile-organizations';
 import type { RepositoryState } from 'reducers/repository';
 import type { RepositoryCommitState } from 'reducers/repository-commit';
 import type { RepositoryIssueState } from 'reducers/repository-issue';
+import type { OrganizationState } from 'reducers/organization';
 import type { RepositoryPullRequestState } from 'reducers/repository-pull-request';
 import type { SettingsState } from 'reducers/settings';
 
@@ -112,6 +113,10 @@ export type Action =
     | BaseAction<"LOGIN_REQUEST_2FA_REQUIRED">
     | ActionWithPayload<"LOGIN_REQUEST_SUCCESS", PlainAuthorizationEntity | OAuthAuthorizationEntity>
     | ActionWithError<"LOGIN_REQUEST_FAIL", any>
+    //
+    | BaseAction<'ORGANIZATION_REQUEST'>
+    | ActionWithPayload<'ORGANIZATION_REQUEST_SUCCESS', CommitEntity>
+    | ActionWithError<'ORGANIZATION_REQUEST_FAIL', any>
 ;
 
 export type ActionType =
@@ -122,6 +127,7 @@ export type ActionType =
     | 'ACCOUNT_FEED_REQUEST'
     | 'ACCOUNT_FEED_INFINITY_REQUEST'
     | 'LOGIN_REQUEST'
+    | 'ORGANIZATION_REQUEST'
 ;
 
 export type PromiseAction = Promise<Action>;
@@ -139,6 +145,7 @@ export type State = {|
     repository: RepositoryState,
     repositoryCommit: RepositoryCommitState,
     repositoryIssue: RepositoryIssueState,
+    organization: OrganizationState,
     repositoryPullRequest: RepositoryPullRequestState,
     settings: SettingsState,
 |};
